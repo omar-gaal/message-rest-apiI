@@ -28,8 +28,9 @@ app.get("/test-read", async (req, res) => {
 });
 
 app.get("/test-write", async (req, res) => {
-  const data = await fs.readFile("data/messages.json", "utf8");
-  const messages = JSON.parse(data);
+  // const data = await fs.readFile("data/messages.json", "utf8");
+  // const messages = JSON.parse(data);
+  const messages = await readMessages();
 
   const newMessage = {
     id: randomUUID(),
@@ -39,8 +40,9 @@ app.get("/test-write", async (req, res) => {
   };
 
   messages.push(newMessage);
-
-  await fs.writeFile("data/messages.json", JSON.stringify(messages, null, 2));
+  await writeMessage(messages);
+  // await fs.writeFile("data/messages.json", JSON.stringify(messages, null, 2));
+  res.json(newMessage);
 });
 
 app.listen(PORT, () => {
