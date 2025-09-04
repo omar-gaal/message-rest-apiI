@@ -1,7 +1,9 @@
+// 7,2
+
+import express from "express";
 import fs from "fs/promises";
 import { randomUUID } from "crypto";
 
-import express, { json } from "express";
 import cors from "cors";
 
 async function readMessages() {
