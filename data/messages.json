@@ -5,7 +5,6 @@
     "text": "Hej! Hvordan går det?",
     "sender": "user"
   },
-  
   {
     "id": "f7b8a9c0-7777-8888-9999-000011112222",
     "date": "2025-09-03T09:16:00.000Z",
@@ -35,5 +34,23 @@
     "date": "2025-09-03T09:18:10.000Z",
     "text": "Det var så lidt. Spørg endelig igen!",
     "sender": "chatbot"
+  },
+  {
+    "id": "2e020f15-d627-46b1-8ce2-2dcd52724abd",
+    "date": "2025-09-04T12:15:06.825Z",
+    "text": "Test besked fra serveren!",
+    "sender": "server"
+  },
+  {
+    "id": "f8f28085-b5fd-4255-8769-c43a685e8547",
+    "date": "2025-09-04T12:15:11.419Z",
+    "text": "Test besked fra serveren!",
+    "sender": "server"
+  },
+  {
+    "id": "f73b9da7-3e44-4d5f-bde4-14a2866c457c",
+    "date": "2025-09-04T12:15:11.635Z",
+    "text": "Test besked fra serveren!",
+    "sender": "server"
   }
 ]
