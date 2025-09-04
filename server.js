@@ -4,6 +4,15 @@ import { randomUUID } from "crypto";
 import express, { json } from "express";
 import cors from "cors";
 
+async function readMessages() {
+  const data = await fs.readFile("data/messages.json", "utf8");
+  return JSON.parse(data);
+}
+
+async function writeMessage(messages) {
+  await fs.writeFile("data/messages.json", JSON.stringify(messages, null, 2));
+}
+
 const app = express();
 const PORT = 3000;
 app.use(express.json());
@@ -14,8 +23,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/test-read", async (req, res) => {
-  const data = await fs.readFile("data/messages.json", "utf8");
-  const messages = JSON.parse(data);
+  const messages = await readMessages();
   res.json(messages);
 });
 
