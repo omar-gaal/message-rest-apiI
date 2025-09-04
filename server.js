@@ -13,6 +13,11 @@ app.get("/", (req, res) => {
   res.send("Node.js Messages REST API 🚀 UPDATED!");
 });
 
+app.get("/test-read", (req, res) => {
+  const data = fs.readFile("/data/messages.json", "utf8");
+  const messages = JSON.parse(data);
+  res.send(messages);
+});
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
 });
