@@ -13,11 +13,28 @@ app.get("/", (req, res) => {
   res.send("Node.js Messages REST API 🚀 UPDATED!");
 });
 
-app.get("/test-read", (req, res) => {
-  const data = fs.readFile("/data/messages.json", "utf8");
+app.get("/test-read", async (req, res) => {
+  const data = await fs.readFile("data/messages.json", "utf8");
   const messages = JSON.parse(data);
-  res.send(messages);
+  res.json(messages);
 });
+
+app.get("/test-write", async (req, res) => {
+  const data = await fs.readFile("data/messages.json", "utf8");
+  const messages = JSON.parse(data);
+
+  const newMessage = {
+    id: randomUUID(),
+    date: new Date().toISOString(),
+    text: "Test besked fra serveren!",
+    sender: "server",
+  };
+
+  messages.push(newMessage);
+
+  await fs.writeFile("data/messages.json", JSON.stringify(messages, null, 2));
+});
+
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
 });
