@@ -51,6 +51,13 @@ app.get("/messages", async (req, res) => {
   res.json(messages);
 });
 
+app.get("/messages/:id", async (req, res) => {
+  const messages = await readMessages();
+  const messageId = req.params.id;
+  const message = messages.find((m) => m.id === messageId);
+  res.json(message);
+});
+
 app.post("/messages", async (req, res) => {
   const messages = await readMessages();
   const { text, sender } = req.body;
@@ -81,12 +88,6 @@ app.put("/messages/:id", async (req, res) => {
   res.json(message);
 });
 
-app.get("/messages/:id", async (req, res) => {
-  const messages = await readMessages();
-  const messageId = req.params.id;
-  const message = messages.find((m) => m.id === messageId);
-  res.json(message);
-});
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
 });
