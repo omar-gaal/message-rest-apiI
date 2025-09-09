@@ -1,10 +1,11 @@
-// 7,2
+// 7,4
 
 import express from "express";
 import fs from "fs/promises";
 import { randomUUID } from "crypto";
 
 import cors from "cors";
+import { send } from "process";
 
 async function readMessages() {
   const data = await fs.readFile("data/messages.json", "utf8");
@@ -30,8 +31,6 @@ app.get("/test-read", async (req, res) => {
 });
 
 app.get("/test-write", async (req, res) => {
-  // const data = await fs.readFile("data/messages.json", "utf8");
-  // const messages = JSON.parse(data);
   const messages = await readMessages();
 
   const newMessage = {
@@ -43,13 +42,43 @@ app.get("/test-write", async (req, res) => {
 
   messages.push(newMessage);
   await writeMessage(messages);
-  // await fs.writeFile("data/messages.json", JSON.stringify(messages, null, 2));
+
   res.json(newMessage);
 });
 
 app.get("/messages", async (req, res) => {
   const messages = await readMessages();
   res.json(messages);
+});
+
+app.post("/messages", async (req, res) => {
+  const messages = await readMessages();
+  const { text, sender } = req.body;
+
+  const newMessage = {
+    id: randomUUID(),
+    date: new Date().toISOString(),
+    text,
+    sender,
+  };
+
+  messages.push(newMessage);
+  await writeMessage(messages);
+  res.json(newMessage);
+  console.log(messages);
+});
+
+app.put("/messages/:id", async (req, res) => {
+  const messages = await readMessages();
+  const messageId = req.params.id;
+  const message = messages.find((message) => message.id === messageId);
+
+  const { text, sender } = req.body;
+  message.text = text;
+  message.sender = sender;
+
+  writeMessage(messages);
+  res.json(message);
 });
 
 app.get("/messages/:id", async (req, res) => {
