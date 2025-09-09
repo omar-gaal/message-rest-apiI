@@ -2,8 +2,8 @@
   {
     "id": "e1a2c3d4-1111-2222-3333-444455556666",
     "date": "2025-09-03T09:15:00.000Z",
-    "text": "Hej! Hvordan går det?",
-    "sender": "user"
+    "text": "Hej! Hvordan går det? sike ikke langere",
+    "sender": "user? sike det mig"
   },
   {
     "id": "f7b8a9c0-7777-8888-9999-000011112222",
@@ -52,5 +52,32 @@
     "date": "2025-09-04T12:15:11.635Z",
     "text": "Test besked fra serveren!",
     "sender": "server"
+  },
+  {
+    "id": "cfed8dec-4277-4647-b93f-fcb474a4c72f",
+    "text": "testing my code",
+    "sender": "omar"
+  },
+  {
+    "id": "95f562b7-5dbc-40c1-a5de-39f162285bbd",
+    "text": "testing my code par 2",
+    "sender": "omarAgain"
+  },
+  {
+    "id": "1815e556-0771-4710-a802-58e3abeb5d45",
+    "text": "testing my code par 3",
+    "sender": "omarAgainAgain"
+  },
+  {
+    "id": "9593b039-8733-4d15-937b-9e31aa1e726f",
+    "date": "2025-09-09T12:38:16.153Z",
+    "text": "testing my code par 3",
+    "sender": "omarAgainAgain"
+  },
+  {
+    "id": "f6667cea-c6fb-4ccc-aa5a-a9529fd35fb2",
+    "date": "2025-09-09T12:39:08.490Z",
+    "text": "final test for this route",
+    "sender": "finalTest"
   }
 ]
