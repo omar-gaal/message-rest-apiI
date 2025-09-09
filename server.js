@@ -1,4 +1,4 @@
-// 7,4
+// 8
 
 import express from "express";
 import fs from "fs/promises";
@@ -86,6 +86,22 @@ app.put("/messages/:id", async (req, res) => {
 
   writeMessage(messages);
   res.json(message);
+});
+
+app.delete("/messages/:id", async (req, res) => {
+  const messages = await readMessages();
+  const messageId = req.params.id;
+
+  const messageIndex = messages.findIndex((m) => m.id === messageId);
+  const deletedMessage = messages[messageIndex];
+
+  messages.splice(messageIndex, 1);
+  await writeMessage(messages);
+
+  res.json({
+    messages: "Message deleted successfully",
+    deletedMessage,
+  });
 });
 
 app.listen(PORT, () => {
